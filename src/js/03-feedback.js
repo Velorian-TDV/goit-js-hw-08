@@ -14,15 +14,19 @@ function dataToStorage(data) {
     if (data.target.type === 'email') {
 
         objetctForStorage.email = data.target.value;
-        localStorage.setItem('feedback-form-state', JSON.stringify(objetctForStorage))
+        saveToStorage()
 
     } else if (data.target.type === 'textarea') {
 
         objetctForStorage.message = data.target.value;
-        localStorage.setItem('feedback-form-state', JSON.stringify(objetctForStorage))
-
+        saveToStorage()
+    
     }
 
+}
+
+function saveToStorage() {
+    localStorage.setItem('feedback-form-state', JSON.stringify(objetctForStorage));
 }
 
 window.addEventListener('load', () => {
@@ -33,6 +37,9 @@ window.addEventListener('load', () => {
 
         emailInput.value = dataFromStorage.email;
         messageInput.value = dataFromStorage.message;
+
+        objetctForStorage.email = dataFromStorage.email;
+        objetctForStorage.message = dataFromStorage.message;
 
     }
 
