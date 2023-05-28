@@ -47,4 +47,17 @@ window.addEventListener('load', () => {
 
 form.addEventListener('input', throttleData)
 
-form.addEventListener('submit', () => localStorage.clear())
+form.addEventListener('submit', (event) => {
+
+    event.preventDefault()
+
+    const dataFromStorage = JSON.parse(localStorage.getItem('feedback-form-state'))
+    
+    console.log(dataFromStorage)
+    
+    emailInput.value = '';
+    messageInput.value = '';
+
+    localStorage.removeItem('feedback-form-state');
+
+})
